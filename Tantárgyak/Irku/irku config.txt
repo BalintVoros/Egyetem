@@ -1,0 +1,152 @@
+IRKU felhasználók
+
+Username : ZH  Password : admin123
+
+ip a --> saját ip cím
+nano/etc/netplan/00-
+Ip adress : 192.168.1.100/24
+gateway 192.168.1.1
+adresses 193.6.33.2
+
+
+
+netplan apply
+ip a
+ping index.hu
+
+Net kiválasztás : Nat network Internet név  Ip address : 192.168.1.10
+
+
+sudo -s 
+
+nano /etc/netplan/00 + 	tab
+
+ip adressek:
+
+
+netplan apply
+
+ping index.hu
+
+apt update
+apt install mcedit
+apt install
+
+
+
+
+
+
+
+
+/megosztas  *(rw,sync,no_root_squash)
+
+ps -aux | grep nfsd
+
+klón gép mount -t nfs 192.168.1.100 :/ megosztas / mnt
+
+klón gépen
+
+cd /mnt
+
+mcedit proba.txt
+
+eredetom cd/megosztas
+
+ls -ls
+more proba.txt
+
+klón gépen
+
+cd / 
+umount /mnt
+
+mount -t nfs -o nolock 192.168.1.0.100:/megosztas /mnt
+
+
+
+Samba :windows fájl megosztas Linux szerveren keresztül
+
+SMB protokoll : V1,V2,V3
+
+apt install samba
+
+mcedit /etc/samba/smb.conf
+
+átírni : workgroup = MUNKA
+
+beszúrni:
+
+security = user
+
+megosztas definiciója 
+
+[folder]
+
+comment = nem fontos
+browseable = yes
+path = /megosztas
+guest ok = no
+read only = no
+create mask = 0765
+valid users = zh
+
+printable sor törlés!
+
+
+rwx rwx rwx (ls -l kiadása után)
+
+5.hét
+
+sudo -s
+cd /
+ls -l
+chown -R zh:zh /megosztas
+
+ls -l
+
+chmod -R 765 / megosztas
+
+ls -l
+
+smbpasswd -a zh
+Jelszó: admin123
+
+REVIOS
+
+config-- nat network (internet elérése)
+
+public internet engedélyezés yes
+
+megnyitas: https://ninite.com
+
+package - winrar ,putty vlc chrome firefox, foxit reader , winSCP
+
+fájl kezelő map network drive this pc-n jobb klikk
+
+\\192.168.1.100\megosztas  mindkettő pipa
+
+
+Irku 6.hét
+
+FREE-nas telepítés
+
+név:NAS
+Iso betallózás:
+
+Típus BSD FREEBSD 64-bit
+2048mb ram 2 cpu core
+16gb disk size
+tároló AHCI Sata felvétel
+disk első hdd második floppy pipa kivesz
+Merevlemez hozzáadás 4 db alap 
+
+Telepítés 
+ada 0 space csillagoza
+
+jelszó admin123
+install via bios
+
+install ipv 4 config 192.168.1.102 netmask 255.255.255.0
+ipv6 nem többi nem
+virtual windowsban chrome 192.168.1.102 root jelszó admin123

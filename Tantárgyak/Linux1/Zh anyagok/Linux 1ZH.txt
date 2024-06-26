@@ -1,0 +1,79 @@
+Install
+
+media/shared --> ide kell telepíteni
+
+Új virtuális gép
+
+1 opció:
+
+Tallózás
+rhel-baseos-9.0-x86_64-dvd.iso
+
+Tovább
+4096mb 2 cpu
+
+Tovább
+Enable Storage
+Select or create custom storage
+
+új Saját kötet neptunkód.qcow2
+
+qemu vm átméretezés
+
+sajátot kiválasztani
+
+Név: neptunkód
+
+konfiguráció testreszabás pipa
+
+
+Nicmenü
+Hálozat forrás Bridge device
+Device name virbr0
+Telepítés megkezdése:
+
+Install
+
+Angol nyelv angol bill + utólag magyar
+
+Storage
+
+custom partíció
+
+standard partition + automata install
+
+software selection network file system server with gui
+
+network 
+configure
+
+ipv4 manual
+address 192.168.122.10 24 netmask gateway 192.168.122.1 dns 192.168.122.1 domain mik.uni-pannon.hu
+
+
+HOSTNAME
+neptunkód
+
+root password linux123 allow root ssh login with password pipa
+
+
+add user név neptunkód username jelszó linux123
+
+begin install 10p kb.
+
+Reboot
+
+
+terminal
+
+ping index.hu
+ip a
+
+ssh root@192.168.122.10
+systemctl enable --now cockpit.socket
+ssh-keygen -f "home/.../.ssh.know_hosts" -R "192.168.122.19"
+
+scp root@192.168.122.10:anaconda-ks.cfg /media/Shared/trupr6-anakonda-ks.cfg
+új terminálban student2 vel futtatni
+
+scp trupr6@192.168.122.10:anaconda-ks.cfg /media/Shared/trupr6-anakonda-ks.cfg

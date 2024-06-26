@@ -1,0 +1,73 @@
+[System]
+Name='GPDSzamitas'
+Type='mamdani'
+Version=2.0
+NumInputs=3
+NumOutputs=1
+NumRules=27
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Népesség'
+Range=[0 1500]
+NumMFs=3
+MF1='Alacsony népességű':'trapmf',[0 5 10 20]
+MF2='Közepes népességű':'trapmf',[20 40 50 100]
+MF3='Magas népességű':'trapmf',[100 200 1000 1500]
+
+[Input2]
+Name='Import'
+Range=[0 500]
+NumMFs=3
+MF1='Kevés bevétel':'trapmf',[0 10 25 50]
+MF2='Közepes bevétel':'trapmf',[50 100 125 150]
+MF3='Magas bevétel':'trapmf',[200 300 400 500]
+
+[Input3]
+Name='Export'
+Range=[0 400]
+NumMFs=3
+MF1='Kevés kiadás':'trapmf',[0 25 50 100]
+MF2='Közepes kiadás':'trapmf',[120 180 200 220]
+MF3='Magas kiadás':'trapmf',[240 300 350 400]
+
+[Output1]
+Name='GDP'
+Range=[0 2300]
+NumMFs=3
+MF1='Alacsony':'trapmf',[0 50 100 300]
+MF2='Közepes':'trapmf',[500 800 1000 1400]
+MF3='Magas':'trapmf',[1800 1900 2200 2300]
+
+[Rules]
+1 3 1, 3 (1) : 1
+1 1 3, 1 (1) : 1
+1 3 3, 2 (1) : 1
+1 2 3, 2 (1) : 1
+1 3 2, 3 (1) : 1
+2 1 3, 1 (1) : 1
+2 3 2, 2 (1) : 1
+2 3 1, 3 (1) : 1
+2 1 3, 1 (1) : 1
+2 2 1, 2 (1) : 1
+2 2 3, 2 (1) : 1
+2 2 2, 2 (1) : 1
+3 1 3, 1 (1) : 1
+3 3 1, 3 (1) : 1
+3 3 3, 1 (1) : 1
+3 3 2, 3 (1) : 1
+2 3 2, 3 (1) : 1
+3 3 2, 3 (1) : 1
+1 1 3, 1 (1) : 1
+2 1 3, 1 (1) : 1
+3 1 3, 1 (1) : 1
+1 2 3, 2 (1) : 1
+2 2 3, 2 (1) : 1
+3 2 3, 1 (1) : 1
+1 3 3, 3 (1) : 1
+2 3 3, 2 (1) : 1
+3 3 3, 3 (1) : 1

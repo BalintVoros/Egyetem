@@ -1,0 +1,14 @@
+Beállítások (setup függvény):
+
+size(1000, 600, P3D): A megjelenítő ablak mérete 1000x600 pixel, és a P3D renderelőt használod, ami lehetővé teszi a 3D-s megjelenítést.
+img = loadImage("hatterarcProcessing.jpg"): Betölt egy képet, amit később a 3D-s objektum textúrájaként használsz. A fájlnevet cseréld le a saját képed útvonalára.
+Rajzolás (draw függvény):
+
+background(255): Beállítja a háttérszínt fehérre.
+lights(): Alapértelmezett világítást ad a 3D-s jelenethez.
+translate(width/2, height/2): Az origót (a koordináta-rendszer kezdőpontját) az ablak közepére helyezi.
+rotateX(mouseY * 0.01) és rotateY(mouseX * 0.01): Forgatja a 3D-s objektumot az X és Y tengelyek mentén az egér pozíciójától függően.
+3D-s szöveges doboz létrehozása:
+
+A beginShape(QUADS) és endShape() között definiálod a 3D-s szöveges doboz hat oldalát, minden oldal négy csúccsal (vertex).
+vertex(x, y, z, u, v): Minden csúcs meghatároz egy pontot a 3D térben (x, y, z koordinátákkal), valamint a textúra koordinátáit (u, v), ami meghatározza, hogy a kép mely része kerüljön erre a pontra.

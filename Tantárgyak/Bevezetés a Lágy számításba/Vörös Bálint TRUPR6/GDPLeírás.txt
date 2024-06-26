@@ -1,0 +1,19 @@
+Az alap ötlete a projektemnek az volt, hogy néhány adatból képes legyek megállapítani, hogy nagyjából mennyi a GDP értéke. Azért nagyjából pontos adatokat határozhatunk meg ezen adatok megadásával.
+
+A program 3 alap értékből dolgozik:
+1. Népesség( Millió Fő)
+2. Import( Millió Euro)
+3. Export( Millió Euro)
+
+Ezekből az értékekből képes GPD számolni különböző szabályok szerint.
+A Népességet 3 főbb csoportra osztottam Kevés Közepes és Nagy minden érték milliós szorzóval értendő így a kapott érték is.
+Az Import során szintén 3 fajta opcióból választhatunk a bevétel függvényében lehet kevés,közepes vagy Magas értékek (szorzók milliókra értendők).
+Az Export esetén a 3 fajta opció megegyezik csak itt a maximális értéket lecsökkentettem mivel a bevéltel általában magasabb mint a kiadás (szorzók milliókra értendők).
+
+Az értékek egy adott tartományban vannak meghatározva amik általánoságban jellemzők a tulajdonságokba beletartozó országokra.
+Népesség esetén 0-tól 1500llióig adható meg ebben az országok összessége megtalálható
+Az import értékek 0-tól 500 millió euróig terjed ami szerintem egy jó intervallumot ad az országok bevételéről.
+Az export nál 0-tól 400 millió euróig mértem fel azért mivel reményeim szerint az országok nagyobb részénél a bevétel magasabb mint a kiadás.
+
+A szabályokat minden lehetséges eshetőségre meghatároztam ,hogy a betáplált értékek esetén a GDP mértéke pontos eredményt adhasson.
+

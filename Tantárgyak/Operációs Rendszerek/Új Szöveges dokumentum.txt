@@ -1,0 +1,326 @@
+1.
+Oldja meg Linux parancsokkal! Az Ön home könyvtára üres. Adja meg azokat a unix parancsokat, amelyek segítségével létre tudja hozni a home könyvtára alatt a szint1 az alatt pedig a szint2 könyvtárat, majd a szint2 könyvtárban a konyveim.txt adatbázist, benne az első könyvével az alábbi formátumban: [sorszám][tab karakter][könyv címe]!
+
+mkdir ~/szint1
+mkdir ~/szint1/szint2
+echo "1 Harry Potter" >> ~/szint1/szint2/konyveim.txt
+
+2.
+Oldja meg Linux parancsokkal! Az Ön home könyvtárában egy tmp1 és egy tmp2 könyvtár található. Másolja át az összes .txt végződésű fájlt a tmp1 könyvtárból a tmp2 könyvtárba úgy, hogy ha a fájl a tmp2 könyvtárban már létezik, a másolás kérdezzen rá, hogy felülírja-e!
+
+cp -i tmp1/*.txt tmp2/
+
+3.
+Oldja meg Linux parancsokkal! Home könyvtárában található egy allatok.txt fájl. Hozzon létre egy allatkert nevű könytárat és készítsen benne szimbolikus linket az allatok.txt fájlra!
+
+mkidr allatkert
+ln -s allatok.txt allatker/allatok.txt
+
+4.
+Oldja meg Linux parancsokkal! Az home könyvtárában található egy allatok.txt fájl. Hozzon létre egy allatkert nevű könytárat és készítsen benne hard linket az allatok.txt fájlra!
+
+mkidr allatkert
+ln allatok.txt allatker/allatok.txt
+
+5.
+Oldja meg Linux parancsokkal! Ön véletlenül több példányban indította el a listazz.pl programot. Állítsa le az összes futó példányt!
+
+kilall listazz.pl
+
+6.
+Oldja meg Linux parancsokkal! Listázza ki részletesen az összes ön által indított futó folyamatot!
+
+ps -aux
+
+7.
+Oldja meg Linux parancsokkal! A szint1/szint2 könyvtárban található a telefonszamok.txt fájl. Írassa ki a 3. sorát!
+
+cat telefonszamok.txt | head -n 3 | tail -n 1
+
+8.
+Oldja meg Linux parancsokkal! Fűzze hozzá a majom szót az allatok.txt fájlhoz!
+
+echo majom >> allatok.txt
+
+9.
+Oldja meg Linux parancsokkal! Írja ki az adatbazisok könyvtárban található telefonszamok.txt fájl összes olyan sorát, amelyben a Katalin név megtalálható!
+
+grep "Katalin" adatbazisok/telefonszamok.txt
+
+10.
+Oldja meg Linux parancsokkal! Módosítsa a jelszavaim.txt fájl hozzáférési jogosultságait egy utasítással úgy, hogy a tulajdonos írhassa és olvashassa, a csoporttagok olvashassák, de ne írhassák, a többiek ne olvashassák, és ne írhassák. A fájlt senki nem futtathatja.
+
+chmod 640 jelszavaim.txt
+
+11.
+Oldja meg Linux parancsokkal! Számolja meg, hogy a konyvek/regenyek alkönyvtárban hány .txt végű fájl található!
+
+ls konyvek/regenyek/*.txt | wc -l
+
+12.
+Oldja meg Linux parancsokkal! Számolja meg, hogy a konyvek/regenyek alkönyvtárban és az alatta levő alkönyvtárakban hány .txt végű fájl található!
+
+find konyvek/regenyek/ -name "*.txt" | wc -l
+
+13.
+Oldja meg Linux parancsokkal! Írja ki a home könyvtárában található összes olyan bejegyzés részletes adatait, amely a felhasznalok csoporthoz tartozik.
+
+find ~ -group felhasznalok -ls
+
+
+14.
+Oldja meg Linux parancsokkal! Módosítsa az összes .sh fájljának utolsó módosítási dátumát az aktuális dátumra!
+
+touch -m *.sh
+
+15.
+Oldja meg Linux parancsokkal! Fűzze össze szint1 alkönyvtárban található összes .txt végű fájl tartalmát és írja bele a home könytárban található textfiles fájlba.
+
+find szint1/ -name "*.txt" -exec cat {} \ ; >> textfiles.txt
+
+16.
+Oldja meg Linux parancsokkal! Írja ki a szint2 alkönyvtárban található egyik legnagyobb állomány részletes adatait!
+
+ls szint2/ -l | sort -n -k 5 | tail -n 1
+
+17.
+Oldja meg Linux parancsokkal! Számolja meg, hogy a home könyvtárában található *.txt fájlok összesen hány szót tartalmaznak!
+
+wc -w *txt | tail -n 1
+
+18.
+Oldja meg Linux parancsokkal! Számolja meg, hogy a home könyvtárában és az alatt található összes könyvtárban levő *.txt fájlok összesen hány sort tartalmaznak!
+
+find ~ -name "*.txt" | xargs wc -l | tail -n 1
+
+19.
+Oldja meg Linux parancsokkal! Írja ki a lista_nagy.txt fájlban található összes településnevet! A lista_nagy.txt felépítése a szokásos.
+
+
+
+20.
+Oldja meg Linux parancsokkal! Az allatok.txt fájl felépítése: [név][tab][súly]. Írja ki az egyik legnehezebb állat nevét!
+
+cat allatok.txt | sort -n -k 1 | tail -n 1
+
+21.
+Oldja meg Linux parancsokkal! A home könyvtárában hozzon létre egy mentes könyvtárat és másolja bele a home könyvtárában és az alatta található összes könyvtárban levő .txt végű fájlokat.
+
+mkdir mentes
+find ~ -name "*.txt" -exec cp {} mentes \;
+
+22.
+Oldja meg Linux parancsokkal! Keresse meg az aktuális felhasználó összes lista.txt nevű fájlját és írja ki a 3. sorát!
+
+find -name "lista.txt" -user $USER -exec cat {} \; | head -n 3 | tail -n 1
+
+23.
+Oldja meg Linux parancsokkal! Az log.txt fájl egy-egy sorában hibaüzenetek találhatóak az alábbi formában [típus][:][leírás]. A típus lehet error vagy warning. Készítsen egy error.txt és egy warning.txt fájlt, amiben az adott típusú üzenetek vannak!
+
+grep "warning" log.txt >> warning.txt
+grep "error" log.txt >> error.txt
+
+24.
+Oldja meg Linux parancsokkal! Az log.txt fájl egy-egy sorában hibaüzenetek találhatóak az alábbi formában [típus][:][leírás]. Adja meg az error, illetve a warning típusú üzenetek számát!
+
+grep "warning" log.txt | wc -l
+grep "error" log.txt | wc -l
+
+25.
+Oldja meg Linux parancsokkal! Keresse meg és írja ki az adott felhasználó összes olyan könyvtárának a nevét, amely a „bal” karakterekkel kezdődik!
+
+find -type d -name "bal*" -user $USER
+
+1.
+Írjon olyan bash scriptet, amely kilistázza az összes olyan fájlt (rejtettekkel együtt) az aktuális felhasználó home könyvtárában, amelyek kiterjesztése .txt.
+
+ls -a ~/*.txt
+
+2.
+Írjon olyan bash scriptet, amely megszámolja az összes olyan fájlt (rejtetekkel együtt) az aktuális felhasználó home könyvtárából kiindulva rekurzívan, amelyek kiterjesztése .txt.
+
+find ~ -name "*.txt" | wc -l
+
+
+3.
+Írjon olyan bash scriptet, amely áthelyezi az aktuális könyvtárban lévő .jpg fájlokat a /images mappába.
+
+cd *.jpg images/
+
+4.
+Írjon olyan bash scriptet, amely a standard inputról bekér egy számot, ezt a számot hozzáfűzi az aktuális mappában lévő azon fájlokhoz, amelyek neve tartalmazza az “vizsga” szót.
+
+read szam
+echo szam >> ./*vizsga*
+
+5.
+Írjon olyan bash scriptet, amely kiírja az aktuális könyvtárban azon fájlok számát, amelyeknél a tulajdonos minden jogosultsággal rendelkezik (a többieknél mindegy a  jogosultság).
+
+find ./ -printf "%m\n" | grep "^7" | wc -l
+
+6.
+Írjon olyan bash scriptet, amely kiírja az aktuális könyvtárban azon fájlok számát, amelyeknél a csoport minden jogosultsággal rendelkezik (a többieknél mindegy a  jogosultság).
+
+find ./ -printf "%m\n" | grep ".7." | wc -l
+
+7.
+Írjon olyan bash scriptet, amely az aktuális könyvtárban létrehoz egy alma.txt nevű fájlt, amelynek a tartalma az aktuális mappában található fájlok száma.
+
+find ./ -type f | wc -l >> alma.txt
+
+8.
+Írjon olyan bash scriptet, amely paraméterben kapott szót hozzáfűzi az aktuális mappában lévő .jpg fájlok elejére, illetve végére.
+
+???
+
+9.
+Írjon olyan bash scriptet, amely az aktuális mappából rekurzívan megkeresi az összes .sh kiterjesztésű fájlt és futtathatóvá teszi azokat mindenki számára.
+
+for file in $(find ./ -name "*.sh")
+do
+chmod a+x $file
+done
+
+10.
+Írjon olyan bash scriptet, amely az aktuális könyvtárból kiindulva törli az összes fájlt rekurzívan.
+
+for file in (ls)
+do
+rm -r $file
+done
+
+11.
+Írjon olyan bash scriptet, amely a home könyvtárból kiindulva rekurzívan megkeresi a legnagyobb fájlt (vagy az egyik legnagyobbat) és kiírja ennek részletes adatait.
+
+ls -l -R | sort -n -k 5 | tail -n 1
+
+12.
+Írjon olyan bash scriptet, amely a home könyvtárból kiindulva rekurzívan megkeresi a legkisebb 3 fájlt és kiírja ezeknek részletes adatait.
+
+ls ~ -l -R | sort -n -k 5 | head -n 3
+
+13.
+Írjon olyan bash scriptet, amely kilistázza a /home/feladat/ nevu mappa tartalmat rekurzívan, hosszú formátumban, úgy, hogy a  rejtett fájlok is látszódjanak, és a kimenetet sorainak számát (csak a számot) fűzze hozzá a hiberfile.sys nevu fajlhoz!
+
+ls -alR /home/feladat/
+wc -l >> hiberfile.sys
+
+14.
+Írjon olyan bash scriptet, amely átmásolja a jelenlegi mappába a /home/feladat/zarthelyi nevu mappa azon fájljait, amelyek tartalmaznak "w" karaktert a nevükben!
+
+for file in $(find /home/feladat/zarthelyi/ -type f -name "*w*")
+do
+cp $file .
+done
+
+15.
+Írjon olyan bash scriptet, amely hozzáfűzi a wcount.rtf nevű fájlhoz a /home/feladat/zarthelyi.txt nevű fájlban a “w” betűvel kezdődő sorok szavainak számát!
+
+grep '^w' /home/feladat/zarthelyi.txt | wc -l >> wcount.rtf
+
+16.
+Írjon olyan bash scriptet, amely hozzáfűzi /home/feladat/asztal.rtf nevű fájl 4. sorát a wcount.rtf nevű fájlhoz!
+
+cat /home/feladat/asztal.rtf | head -n 4 | tail -n 1 >> wcount.rtf
+
+17.
+Írjon olyan bash scriptet, amely átmásolja a /home/feladat/masol.txt nevű fájl sorait alfabetikus sorrendben az aktualis mappan belul a sum41.mp3 nevű fájlba!
+
+cat /home/feladat/masol.txt | sort -d >> sum41.mp3
+
+18.
+Írjon olyan bash scriptet, amely a billentyűzetről beolvas 5 számot és kiírja az összegüket és az átlagukat!
+
+osszeg=0
+for ((i=0; i<5; i++))
+do
+read szam
+((osszeg=$szam+$osszeg))
+done
+
+echo 'osszeg: ' $osszeg
+echo 'atlag: ' $(($osszeg/5))
+
+19.
+Írjon olyan bash scriptet, amely a paraméterként kapott számoknak kiírja az összegét és az átlagát!
+
+osszeg=0
+for i in $@
+do
+((osszeg=$osszeg+$i))
+done
+
+echo 'osszeg: ' $osszeg
+echo 'atlag: ' $(($osszeg/$#))
+
+20.
+Írjon olyan bash scriptet, amely első paraméterként egy kiterjesztést kap, második paraméterként pedig egy könyvtár nevet! A script az aktuális könyvtárban található összes kiterjesztésre végződő nevű fájlt bemásolja a könyvtárba.
+
+for file in $(ls *$1)
+do
+cp $file $2
+done
+
+21.
+Írjon olyan bash scriptet, amely amíg lehet sorokat olvas be egymás után a billentyűzetről, majd a sorokat mint fájlneveket értelmez és kiírja, hogy van-e ilyen fájlja az aktuális felhasználónak.
+
+while true
+do
+read sor
+if test -e $sor
+then
+echo 'van ilyen'
+else
+echo 'nincs ilyen'
+fi
+done 
+
+22.
+Írjon olyan bash scriptet, amely paraméterként 2 szót és egy fájlnevet kap, és kiírja, hogy az adott fájlban melyik szó szerepel többször.
+
+elso=$(grep '$1' $3 | wc -l)
+masodik=$(grep '$2' $3 | wc -l)
+
+if (($elso>$masodik))
+then echo $1 ' van tobbet' 
+else
+echo $2 ' van tobbet'
+fi
+
+23.
+Írjon olyan bash scriptet, amely paraméterként fájlneveket kap és kiírja annak a fájlnak a nevét, amelyik ezek közül a legtöbb sort tartalmazza.
+
+
+max=0
+
+for file in $@
+do
+kovetkezo=$(cat $file | wc -l)
+if ((kovetkezo>max))
+then
+max=kovetkezo
+maxfile=$file
+fi
+done
+
+echo $maxfile
+
+
+24.
+Írjon olyan bash scriptet, amely a bevasarlolista.txt fájlt megnyitva kiírja, hogy összesen hány terméket vásároltunk! A fájl sorainak formátuma [darabszám][tab][termék].
+
+osszeg=0
+while read db termek
+do
+((osszeg=$db+$osszeg))
+done < bevasarlolista.txt
+
+echo $osszeg
+
+25.
+Írjon olyan bash scriptet, amely a bevasarlolista.txt fájlt megnyitva kiírja, hogy mely termékekből vásároltuk a legtöbbet! A fájl sorainak formátuma [darabszám][tab][termék].
+
+read db termek $(cat bevasarlolista.txt | sort -n -k 1 | tail -n 1)
+echo $termek
+
+
